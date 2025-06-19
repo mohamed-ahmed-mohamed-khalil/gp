@@ -130,10 +130,7 @@ my-env/
 # Cython debug symbols
 cython_debug/
 
-# Docker
-**/Dockerfile*
-**/docker-compose.yml
-.docker/
+
 
 # OS generated files
 .DS_Store

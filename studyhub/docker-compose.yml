@@ -1,0 +1,67 @@
+version: "3.8"
+
+services:
+  api_gateway:
+    build: ./api_gateway
+    ports:
+      - "5000:5000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    depends_on:
+      - ocr_service
+      # - translation_service
+      - tts_service
+      - summarization_service
+
+  ocr_service:
+    build: ./ocr_service
+    ports:
+      - "5002:5000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  # translation_service:
+  #   build: ./translation_service
+  #   ports:
+  #     - "5003:5000"
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #           - driver: nvidia
+  #             count: all
+  #             capabilities: [gpu]
+
+  tts_service:
+    build: ./tts_service
+    ports:
+      - "5004:5000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  summarization_service:
+    build: ./summarization_service
+    ports:
+      - "5005:5000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
