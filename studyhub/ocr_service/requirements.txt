@@ -1,0 +1,8 @@
+flask
+pytesseract
+opencv-python
+numpy
+pymupdf
+python-docx
+Pillow
+werkzeug
